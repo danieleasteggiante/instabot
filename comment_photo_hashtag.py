@@ -8,12 +8,12 @@ import time
 def comment_photo_hashtag(hashtag_list, comment_list, driver, number_comment_for_hashtag):
     comments_total_number = 0
     for i in hashtag_list:
-        if comments_total_number > 7:
+        if comments_total_number > 10:
             break
         url = "https://www.instagram.com/explore/tags/"+ i + "/"
         driver.get(url)
-        first_photo = "/html/body/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[1]/section/main/article/div[1]/div/div/div[1]/div[1]/a/div/div[2]"
-        WebDriverWait(driver, 7).until(
+        first_photo = "//h2[contains(text(),'recenti')]/following::a"
+        WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, first_photo))).click()
         
         go_stright_first_time = "/html/body/div[1]/div/div/div/div[2]/div/div/div[1]/div/div[3]/div/div/div/div/div[1]/div/div/div/button"
